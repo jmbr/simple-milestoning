@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
   if (argc < 6) {
     std::cerr << "Usage: " << argv[0] << " num-milestones max-fragments "
               << "delta-t temperature random-seed" << std::endl;
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
   }
 
   const unsigned num_milestones = atoi(argv[1]);
@@ -49,7 +49,7 @@ void milestoning::run() {
   //  The last milestone is always absorbing, so we don't sample
   //  from it.
   for (unsigned n = 0; n < num_milestones-1; ++n) {
-    std::cout << "Sampling from " << milestones[n] << "\n";
+    std::clog << "Sampling from " << milestones[n] << "\n";
     sample_fragments(&milestones[n]);
   }
 
