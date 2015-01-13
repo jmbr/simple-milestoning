@@ -48,8 +48,10 @@ milestoning::milestoning(unsigned num_milestones_,
 void milestoning::run() {
   //  The last milestone is always absorbing, so we don't sample
   //  from it.
-  for (unsigned n = 0; n < num_milestones-1; ++n)
+  for (unsigned n = 0; n < num_milestones-1; ++n) {
+    std::cout << "Sampling from " << milestones[n] << "\n";
     sample_fragments(&milestones[n]);
+  }
 
   compute_results();
 }

@@ -3,6 +3,7 @@
 #include <cstddef>
 
 #include <vector>
+#include <iostream>
 
 struct milestone {
   milestone(double coord, unsigned index) : x(coord), idx(index) {}
@@ -11,6 +12,10 @@ struct milestone {
 
   double x;
   size_t idx;
+
+  friend std::ostream& operator<<(std::ostream& stream,const milestone& m) {
+    return stream << "milestone #" << m.idx << " (x = " << m.x << ")";
+  }
 };
 
 struct milestone_list {
