@@ -112,7 +112,7 @@ void milestoning::compute_results() {
   // By computing the stationary flux in this manner we don't need an
   // eigenvalue solver. In production code, however, it is better to
   // avoid matrix inversions and find the dominant eigenvector
-  // directly.
+  // by other means (for example, using Arnoldi iteration).
   arma::rowvec q = arma::trans(e1) * arma::inv(I - K);
   q /= norm(q, 1);
 
