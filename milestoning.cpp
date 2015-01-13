@@ -56,33 +56,30 @@ void milestoning::run() {
 
 void milestoning::sample_fragments(const milestone* start) {
   for (unsigned long f = 0; f < max_fragments; ++f) {
-    double x = start->x;
-    dyna.x = x;
+    dyna.x = start->x;
     dyna.time = 0.0;
 
     double xprev;
-    unsigned long step;
 
+    unsigned long step;
     for (step = 1; step <= max_steps; ++step) {
       xprev = dyna.x;
 
-      x = dyna.next(rng);
+      dyna.next(rng);
 
       // Check to see if we have crossed a milestone and ignore the
       // crossing event unless it happened on a different milestone
       // than the one we started from.
-      const milestone* current = milestones.crossed(xprev, x);
+      const milestone* current = milestones.crossed(xprev, dyna.x);
       if (current && current != start) {
-        const int i = start->idx;
-        const int j = current->idx;
+        const auto i = start->idx;
+        const auto j = current->idx;
 
         ++A(i, j);
         B(i, j) += dyna.time;
 
         break;
       }
-
-      dyna.x = x;
     }
 
     if (step == max_steps)

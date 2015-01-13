@@ -1,15 +1,16 @@
 #pragma once
 
+#include <cstddef>
+
 #include <vector>
 
 struct milestone {
-  milestone() {}
   milestone(double coord, unsigned index) : x(coord), idx(index) {}
 
   bool crossed(double u, double v) const;
 
   double x;
-  unsigned idx;
+  size_t idx;
 };
 
 struct milestone_list {
@@ -19,16 +20,6 @@ struct milestone_list {
 
   const milestone& operator[](unsigned i) const;
 
-  unsigned size() const;
-
-  std::vector<milestone>::iterator begin() { 
-    return milestones.begin(); 
-  }
-  
-  std::vector<milestone>::iterator end() { 
-    return milestones.end(); 
-  }
-
-  unsigned idx;
+  size_t idx;
   std::vector<milestone> milestones;
 };

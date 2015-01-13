@@ -11,8 +11,7 @@
 #include "milestones.h"
 #include "integrator.h"
 
-class milestoning {
- public:
+struct milestoning {
   milestoning(unsigned num_milestones, unsigned long max_fragments,
               double delta_t, double temperature, unsigned long random_seed);
 
@@ -20,7 +19,6 @@ class milestoning {
   void sample_fragments(const milestone* start);
   void compute_results();
 
- public:
   unsigned num_milestones;
   unsigned long max_fragments;
   double delta_t, temperature;

@@ -22,7 +22,3 @@ const milestone* milestone_list::crossed(double u, double v) const {
 const milestone& milestone_list::operator[](unsigned i) const {
   return milestones.at(i);
 }
-
-unsigned milestone_list::size() const {
-  return milestones.size();
-}
